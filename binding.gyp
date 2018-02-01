@@ -20,21 +20,30 @@
           'defines': [
             'uint=unsigned int',
           ],
-          'libraries': [ 
+          'libraries': [
             '-l<(openssl_root)/lib/libeay32.lib',
           ],
           'include_dirs': [
             '<(openssl_root)/include',
-                        "<!(node -e \"require('nan')\")"
+            "<!(node -e \"require('nan')\")"
           ],
         }, { # OS!="win"
           'include_dirs': [
             # use node's bundled openssl headers on Unix platforms
             '<(node_root_dir)/deps/openssl/openssl/include',
-                        "<!(node -e \"require('nan')\")"
+            "<!(node -e \"require('nan')\")"
           ],
         }],
       ],
+    },
+    {
+      "target_name": "action_after_build",
+      "type": "none",
+      "dependencies": ['ursaNative'],
+      "copies": [{
+        "files": [ "<(PRODUCT_DIR)/ursaNative.node" ],
+        "destination": "lib/binding/<!(node './lib/module_dir')/"
+      }]
     }
   ]
 }
