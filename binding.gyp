@@ -42,7 +42,7 @@
       "dependencies": ['ursaNative'],
       "copies": [{
         "files": [ "<(PRODUCT_DIR)/ursaNative.node" ],
-        "destination": "lib/binding/<!(node './lib/module_dir')/"
+        "destination": "lib/binding/<!(node ./lib/module_dir)/"
       }]
     }
   ]
