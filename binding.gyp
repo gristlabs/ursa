@@ -35,6 +35,15 @@
           ],
         }],
       ],
+    },
+    {
+      "target_name": "action_after_build",
+      "type": "none",
+      "dependencies": ['ursaNative'],
+      "copies": [{
+        "files": [ "<(PRODUCT_DIR)/ursaNative.node" ],
+        "destination": "lib/binding/<!(node ./lib/module_dir)/"
+      }]
     }
   ]
 }
